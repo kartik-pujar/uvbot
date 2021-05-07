@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<robot name="uvbot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<transmission name="Rev60_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev60">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev60_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Rev62_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev62">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev62_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>

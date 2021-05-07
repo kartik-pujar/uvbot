@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+ <arg name="addpose_topic" default="/initialpose"/>
+ <arg name="posearray_topic" default="/waypoints"/>
+
+  <node pkg="uvbot_description" type="follow_waypoints.py" name="follow_waypoints" output="screen" clear_params="true">
+    <param name="goal_frame_id" value="map"/>
+    <param name="addpose_topic" value="$(arg addpose_topic)"/>
+    <param name="posearray_topic" value="$(arg posearray_topic)"/>
+  </node>
+</launch>
+

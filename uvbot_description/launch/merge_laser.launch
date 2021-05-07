@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+  <node pkg="tf" type="static_transform_publisher" name="laser_link_offset" args="0 0 0.16 0 0 0 1 base_link laser_link3 5" />
+
+  <node pkg="ira_laser_tools" name="merge_after_filter" type="laserscan_multi_merger" output="screen" launch-prefix="bash -c 'sleep 3; $0 $@'">
+    <param name="scan_destination_topic" value="/laserscan" />
+    <param name="destination_frame" value="laser_link3" />
+    <param name="laserscan_topics" value="/laserscan1 /laserscan2" />
+    <param name="angle_min" value="-3.14159011841" />
+    <param name="angle_max" value="3.14159011841" />
+  </node>
+
+</launch>

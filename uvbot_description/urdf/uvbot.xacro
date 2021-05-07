@@ -1,0 +1,489 @@
+<?xml version="1.0" ?>
+<robot name="uvbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find uvbot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find uvbot_description)/urdf/uvbot.trans" />
+<xacro:include filename="$(find uvbot_description)/urdf/uvbot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0014212133130561632 -0.00011343264987574764 0.028000406327663995"/>
+    <mass value="1.1101034043197626"/>
+    <inertia ixx="0.011883" ixy="0.0" ixz="0.0" iyy="0.012525" iyz="0.0" izz="0.02436"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_r_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330980819948657e-07 0.03894347279223513 -0.008999969522538974"/>
+    <mass value="0.5157784078443187"/>
+    <inertia ixx="0.000382" ixy="0.0" ixz="0.0" iyy="6e-05" iyz="0.0" izz="0.000382"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001421 0.112243 -0.059"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/motor_r_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001421 0.112243 -0.059"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/motor_r_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_r_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330981184132167e-07 0.002157535436141389 3.04774533041452e-08"/>
+    <mass value="0.12093530699476142"/>
+    <inertia ixx="0.000105" ixy="0.0" ixz="0.0" iyy="0.000198" iyz="-0.0" izz="0.000105"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001421 0.135243 -0.05"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/wheel_r_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001421 0.135243 -0.05"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/wheel_r_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_l_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330980780462014e-07 -0.03894433809198744 -0.008999969522539182"/>
+    <mass value="0.5157784078443183"/>
+    <inertia ixx="0.000382" ixy="-0.0" ixz="0.0" iyy="6e-05" iyz="0.0" izz="0.000382"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001421 -0.112017 -0.059"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/motor_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001421 -0.112017 -0.059"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/motor_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_l_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330981772268477e-07 -0.002158400735893684 3.047747294815384e-08"/>
+    <mass value="0.12093530699476145"/>
+    <inertia ixx="0.000105" ixy="-0.0" ixz="-0.0" iyy="0.000198" iyz="0.0" izz="0.000105"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001421 -0.135017 -0.05"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/wheel_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001421 -0.135017 -0.05"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/wheel_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.192858256212873 -6.26874464488631e-05 0.16360009422179814"/>
+    <mass value="7.280162667028889"/>
+    <inertia ixx="0.183177" ixy="-0.00034" ixz="0.000158" iyy="0.183707" iyz="5.3e-05" izz="0.252794"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.192459 0.000113 -0.0315"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.192459 0.000113 -0.0315"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_f_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03214138298344821 -0.024220151474410145 0.026522080196952902"/>
+    <mass value="0.13221021440082156"/>
+    <inertia ixx="6.8e-05" ixy="2.3e-05" ixz="-1.3e-05" iyy="8.2e-05" iyz="1e-05" izz="0.000119"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.064185 0.071752 -0.3005"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_f_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.064185 0.071752 -0.3005"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_f_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_b_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.030829732681847175 0.02586910115710056 0.02652208019695307"/>
+    <mass value="0.13221021440082098"/>
+    <inertia ixx="7.1e-05" ixy="2.4e-05" ixz="1.2e-05" iyy="7.9e-05" iyz="-1e-05" izz="0.000119"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.066127 -0.071523 -0.3005"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.066127 -0.071523 -0.3005"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_f_top_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="7.893035522399394e-08 1.380416782825744e-07 0.003250015238730808"/>
+    <mass value="0.023287282858453755"/>
+    <inertia ixx="6e-06" ixy="0.0" ixz="-0.0" iyy="6e-06" iyz="-0.0" izz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.104117 0.101843 -0.345"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_f_top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.104117 0.101843 -0.345"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_f_top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_b_top_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.974962788534265e-07 4.995585063533037e-07 0.0032500152387306414"/>
+    <mass value="0.023287282858453925"/>
+    <inertia ixx="6e-06" ixy="-0.0" ixz="-0.0" iyy="6e-06" iyz="0.0" izz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.10443 -0.103662 -0.345"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_b_top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.10443 -0.103662 -0.345"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/lidar_b_top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="top_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.6716132735672745e-07 -4.3264987614011023e-07 0.3428455057608125"/>
+    <mass value="2.39405322057488"/>
+    <inertia ixx="0.131467" ixy="-8e-06" ixz="0.0" iyy="0.131458" iyz="-0.0" izz="0.009307"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001027 0.000113 -0.3105"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001027 0.000113 -0.3105"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tube1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.6716132671639765e-07 -4.32649875529989e-07 -0.26999996952253935"/>
+    <mass value="0.5761836728645969"/>
+    <inertia ixx="0.013943" ixy="0.0" ixz="-0.0" iyy="0.013943" iyz="-0.0" izz="4.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001027 -0.049887 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001027 -0.049887 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tube2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.671613267059893e-07 -4.3264987546936856e-07 -0.269999969522539"/>
+    <mass value="0.5761836728645964"/>
+    <inertia ixx="0.013943" ixy="-0.0" ixz="-0.0" iyy="0.013943" iyz="-0.0" izz="4.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.048973 0.000113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.048973 0.000113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tube3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.671613267445869e-07 -4.3264987546753897e-07 -0.26999996952253913"/>
+    <mass value="0.5761836728645967"/>
+    <inertia ixx="0.013943" ixy="0.0" ixz="-0.0" iyy="0.013943" iyz="-0.0" izz="4.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.001027 0.050113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.001027 0.050113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tube4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.671613267059893e-07 -4.3264987547896375e-07 -0.2699999695225386"/>
+    <mass value="0.5761836728645964"/>
+    <inertia ixx="0.013943" ixy="-0.0" ixz="-0.0" iyy="0.013943" iyz="-0.0" izz="4.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.051027 0.000113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.051027 0.000113 -0.8945"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/tube4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330981525569115e-07 -4.326498762379324e-07 -0.009587822042544021"/>
+    <mass value="0.013861515021644047"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.131421 0.000113 -0.0235"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/caster2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.131421 0.000113 -0.0235"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/caster2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.1330981536671345e-07 -4.3264987623653646e-07 -0.00958782204254405"/>
+    <mass value="0.013861515021644089"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.128579 0.000113 -0.0235"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/caster1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.128579 0.000113 -0.0235"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/caster1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0010435169512081066 0.0021603266423281782 -0.004873889693730815"/>
+    <mass value="0.006742854138451138"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.170454 0.000113 -0.294505"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.170454 0.000113 -0.294505"/>
+    <geometry>
+      <mesh filename="package://uvbot_description/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid59" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.001421 -0.112243 0.059"/>
+  <parent link="base_link"/>
+  <child link="motor_r_1"/>
+</joint>
+
+<joint name="Rev60" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.023 -0.009"/>
+  <parent link="motor_r_1"/>
+  <child link="wheel_r_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid61" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.001421 0.112017 0.059"/>
+  <parent link="base_link"/>
+  <child link="motor_l_1"/>
+</joint>
+
+<joint name="Rev62" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.023 -0.009"/>
+  <parent link="motor_l_1"/>
+  <child link="wheel_l_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid63" type="fixed">
+  <origin rpy="0 0 0" xyz="0.192459 -0.000113 0.0315"/>
+  <parent link="base_link"/>
+  <child link="base_1"/>
+</joint>
+
+<joint name="Rigid64" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.128274 -0.071639 0.269"/>
+  <parent link="base_1"/>
+  <child link="lidar_f_1"/>
+</joint>
+
+<joint name="Rigid65" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.258586 0.071636 0.269"/>
+  <parent link="base_1"/>
+  <child link="lidar_b_1"/>
+</joint>
+
+<joint name="Rigid66" type="fixed">
+  <origin rpy="0 0 0" xyz="0.039932 -0.030091 0.0445"/>
+  <parent link="lidar_f_1"/>
+  <child link="lidar_f_top_1"/>
+</joint>
+
+<joint name="Rigid67" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.038303 0.032139 0.0445"/>
+  <parent link="lidar_b_1"/>
+  <child link="lidar_b_top_1"/>
+</joint>
+
+<joint name="Rigid68" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.193486 0.0 0.279"/>
+  <parent link="base_1"/>
+  <child link="top_1"/>
+</joint>
+
+<joint name="Rigid72" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.05 0.584"/>
+  <parent link="top_1"/>
+  <child link="tube1_1"/>
+</joint>
+
+<joint name="Rigid73" type="fixed">
+  <origin rpy="0 0 0" xyz="0.05 0.0 0.584"/>
+  <parent link="top_1"/>
+  <child link="tube2_1"/>
+</joint>
+
+<joint name="Rigid74" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.05 0.584"/>
+  <parent link="top_1"/>
+  <child link="tube3_1"/>
+</joint>
+
+<joint name="Rigid75" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.05 0.0 0.584"/>
+  <parent link="top_1"/>
+  <child link="tube4_1"/>
+</joint>
+
+<joint name="Rigid76" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.131421 -0.000113 0.0235"/>
+  <parent link="base_link"/>
+  <child link="caster2_1"/>
+</joint>
+
+<joint name="Rigid77" type="fixed">
+  <origin rpy="0 0 0" xyz="0.128579 -0.000113 0.0235"/>
+  <parent link="base_link"/>
+  <child link="caster1_1"/>
+</joint>
+
+<joint name="Rigid79" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.022005 0.0 0.263005"/>
+  <parent link="base_1"/>
+  <child link="camera_1"/>
+</joint>
+
+</robot>

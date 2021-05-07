@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<launch>
+  
+    <!-- gazebo -->
+  <param command="$(find xacro)/xacro $(find uvbot_description)/urdf/uvbot.xacro" name="robot_description"/>
+  <node args="-param robot_description -urdf -model uvbot" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find uvbot_description)/worlds/class_room.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>   
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find uvbot_description)/maps/class_room.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Place map frame at odometry frame -->
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/>
+
+  <!-- Localization -->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="/laserscan"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="odom_model_type" value="diff-corrected"/>
+    <param name="base_frame_id" value="base_link"/>
+    <param name="update_min_d" value="0.5"/>
+    <param name="update_min_a" value="1.0"/>
+    <!--param name="transform_tolerance" value="0.2"/-->
+  </node>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find uvbot_description)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find uvbot_description)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find uvbot_description)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find uvbot_description)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find uvbot_description)/config/base_local_planner_params.yaml" command="load" />
+    
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odom"/>
+    <remap from="scan" to="/laserscan"/>
+    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
+  </node>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find uvbot_description)/urdf/uvbot.xacro'"/>
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find uvbot_description)/rviz/amcl.rviz"/>
+
+  <!-- follow waypoints  -->
+ <arg name="addpose_topic" default="/initialpose"/>
+ <arg name="posearray_topic" default="/waypoints"/>
+
+  <node pkg="uvbot_description" type="follow_waypoints.py" name="follow_waypoints" output="screen" clear_params="true">
+    <param name="goal_frame_id" value="map"/>
+    <param name="addpose_topic" value="$(arg addpose_topic)"/>
+    <param name="posearray_topic" value="$(arg posearray_topic)"/>
+  </node>
+
+    <!-- people detection  -->
+  <arg name="max_rate"  default="5"/>
+  <arg name="scale"     default="0.5"/>
+  <arg name="image"     default="/uvbot/camera1/image_raw"/>
+
+  <node name="person_detector" pkg="pal_person_detector_opencv" type="pal_person_detector_opencv" output="screen">
+    <remap from="image" to="$(arg image)"/>
+    <param name="rate"  value="$(arg max_rate)"/>
+    <param name="scale" value="$(arg scale)"/>
+  </node>
+
+</launch>
